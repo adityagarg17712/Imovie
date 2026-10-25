@@ -76,6 +76,23 @@ app.use('/api', (req, res, next) => {
   next();
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    name: 'IMovies Cinema Platform API',
+    status: 'online',
+    version: '1.0.0',
+    documentation: '/api/health',
+    endpoints: {
+      health: '/api/health',
+      movies: '/api/movies',
+      theatres: '/api/theatres',
+      shows: '/api/shows',
+      auth: '/api/auth'
+    }
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
